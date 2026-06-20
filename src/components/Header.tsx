@@ -76,7 +76,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 top-16 z-40 lg:hidden bg-black/20 backdrop-blur-sm" onClick={() => setOpen(false)} />
+        <div className="fixed inset-0 top-16 z-40 lg:hidden bg-black/50 backdrop-blur-md" onClick={() => setOpen(false)} />
       )}
 
       {open && (

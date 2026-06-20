@@ -81,7 +81,7 @@ export const products: Product[] = [
     slug: "alu-alu-blister-dpe-260",
     name: "Alu Alu Blister Packing Machine DPE-260",
     short: "High-output cold-form aluminum blister line for moisture-sensitive tablets and capsules.",
-    image: alualu,
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fc961743549a1474795a8adbbd3509cf6%2F0d7e6723aaec448d9a3a5be28ecf3569?format=webp&width=800&height=1200",
     overview:
       "The DPE-260 is a fully automatic Alu-Alu blister packing machine designed for cold forming of hard-tempered aluminum foil. Engineered for high-barrier pharmaceutical packaging, it delivers superior protection against moisture, oxygen and light for sensitive APIs.",
     features: [
@@ -268,7 +268,7 @@ export const products: Product[] = [
     slug: "blister-machine-dies",
     name: "Blister Machine Dies",
     short: "Custom precision dies for Alu-Alu and Alu-PVC blister machines.",
-    image: dies,
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fc961743549a1474795a8adbbd3509cf6%2F3e414123442f4424b5c84865720f8961?format=webp&width=800&height=1200",
     overview:
       "AK Pharma Engineering manufactures precision forming, sealing and cutting dies for all major blister packaging machine brands. Each die is CNC machined and hand-finished to micron tolerances.",
     features: [
