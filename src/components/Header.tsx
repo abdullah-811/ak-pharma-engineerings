@@ -18,9 +18,18 @@ export function Header() {
 
   useEffect(() => { setOpen(false); }, [pathname]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [open]);
+
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
           : "bg-white/50 backdrop-blur-sm"
@@ -31,7 +40,7 @@ export function Header() {
           <Logo size={44} />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8 flex-1 px-8">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 flex-1 px-6 xl:px-8">
           {navLinks.map((l) => (
             <Link
               key={l.to}
@@ -47,18 +56,19 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 lg:gap-3 ml-auto shrink-0">
+        <div className="flex items-center gap-2 md:gap-3 ml-auto shrink-0">
           <a
             href={`tel:${company.phoneRaw}`}
-            className="hidden lg:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+            className="hidden lg:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-4 xl:px-5 py-2.5 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
           >
             <Phone className="w-4 h-4" />
             <span className="hidden xl:inline">{company.phone}</span>
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2.5 rounded-lg hover:bg-secondary transition-colors duration-200"
+            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors duration-200 active:bg-secondary/80"
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -66,14 +76,18 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border/10 bg-white/50 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
-          <nav className="container-page py-4 flex flex-col">
+        <div className="fixed inset-0 top-16 z-40 lg:hidden bg-black/20 backdrop-blur-sm" onClick={() => setOpen(false)} />
+      )}
+
+      {open && (
+        <div className="lg:hidden border-t border-border/10 bg-white backdrop-blur-sm animate-in slide-in-from-top-2 duration-200 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <nav className="container-page py-6 flex flex-col">
             {navLinks.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                className="py-3.5 text-base font-medium text-foreground border-b border-border/5 last:border-0 hover:text-brand-deep transition-colors duration-200"
-                activeProps={{ className: "py-3.5 text-base font-semibold text-brand-deep border-b border-border/5 last:border-0" }}
+                className="py-4 text-base font-medium text-foreground border-b border-border/5 last:border-0 hover:text-brand-deep transition-colors duration-200"
+                activeProps={{ className: "py-4 text-base font-semibold text-brand-deep border-b border-border/5 last:border-0" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}
@@ -81,7 +95,7 @@ export function Header() {
             ))}
             <a
               href={`tel:${company.phoneRaw}`}
-              className="mt-4 inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-5 py-3 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 w-full"
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-5 py-3 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 w-full"
             >
               <Phone className="w-4 h-4" /> Call {company.phone}
             </a>

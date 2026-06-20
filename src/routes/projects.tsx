@@ -21,13 +21,16 @@ function Projects() {
   return (
     <SiteLayout>
       <PageHero eyebrow="Projects" title="Selected projects & installations" subtitle="A snapshot of pharmaceutical engineering work delivered for clients across Pakistan and abroad." />
-      <section className="py-16 md:py-20">
-        <div className="container-page grid md:grid-cols-2 gap-6">
+      <section className="py-16 sm:py-24 md:py-28">
+        <div className="container-page grid md:grid-cols-2 gap-6 sm:gap-7">
           {projects.map((p) => (
-            <div key={p.title} className="bg-white border border-border rounded-xl p-6 shadow-card hover:border-brand/30 hover:shadow-brand transition">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand"><MapPin className="w-3.5 h-3.5" /> Project</div>
-              <h3 className="mt-2 font-display font-bold text-brand-deep text-lg">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+            <div
+              key={p.title}
+              className="bg-white border border-border rounded-2xl p-6 sm:p-7 shadow-card hover:border-brand/30 hover:shadow-brand transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand"><MapPin className="w-4 h-4 group-hover:scale-110 transition-transform" /> Project</div>
+              <h3 className="mt-4 font-display font-bold text-brand-deep text-lg sm:text-xl">{p.title}</h3>
+              <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">{p.desc}</p>
             </div>
           ))}
         </div>

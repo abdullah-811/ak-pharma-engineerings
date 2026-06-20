@@ -28,22 +28,25 @@ function Quality() {
   return (
     <SiteLayout>
       <PageHero eyebrow="Quality Assurance" title="Engineered to GMP. Verified before it leaves our floor." subtitle="Quality is built into every stage — from material selection and machining to assembly, testing and validation." />
-      <section className="py-16 md:py-24">
-        <div className="container-page grid lg:grid-cols-2 gap-12 items-center">
-          <img src={qa} alt="Pharmaceutical quality control" width={1600} height={900} loading="lazy" className="rounded-xl shadow-card w-full h-auto object-cover" />
+      <section className="py-16 sm:py-24 md:py-28">
+        <div className="container-page grid lg:grid-cols-2 gap-10 sm:gap-14 items-center">
+          <img src={qa} alt="Pharmaceutical quality control" width={1600} height={900} loading="lazy" className="rounded-2xl shadow-card w-full h-auto object-cover order-last lg:order-first" />
           <div>
-            <h2 className="text-3xl font-display font-bold text-brand-deep">A culture of precision</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl md:text-4xl font-display font-bold text-brand-deep">A culture of precision</h2>
+            <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
               Pharmaceutical machinery must run reliably for years and produce packaging that protects patients. Our quality system covers incoming materials, in-process machining checks, sub-assembly testing, full-machine FAT and post-installation validation. We document everything — so audits, regulators and your QA team get answers fast.
             </p>
           </div>
         </div>
-        <div className="container-page mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="container-page mt-16 sm:mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {pillars.map((p) => (
-            <div key={p.title} className="bg-white border border-border rounded-xl p-6 shadow-card hover:border-brand/30 hover:shadow-brand transition">
-              <p.icon className="w-7 h-7 text-brand" />
-              <h3 className="mt-4 font-display font-bold text-brand-deep">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+            <div
+              key={p.title}
+              className="bg-white border border-border rounded-2xl p-6 sm:p-7 shadow-card hover:border-brand/30 hover:shadow-brand transition-all duration-300 group flex flex-col"
+            >
+              <p.icon className="w-8 h-8 text-brand group-hover:scale-110 transition-transform" />
+              <h3 className="mt-5 font-display font-bold text-brand-deep text-lg">{p.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-grow">{p.desc}</p>
             </div>
           ))}
         </div>
