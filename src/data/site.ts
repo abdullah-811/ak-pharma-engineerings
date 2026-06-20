@@ -81,7 +81,7 @@ export const products: Product[] = [
     slug: "alu-alu-blister-dpe-260",
     name: "Alu Alu Blister Packing Machine DPE-260",
     short: "High-output cold-form aluminum blister line for moisture-sensitive tablets and capsules.",
-    image: alualu,
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fc961743549a1474795a8adbbd3509cf6%2F0d7e6723aaec448d9a3a5be28ecf3569?format=webp&width=800&height=1200",
     overview:
       "The DPE-260 is a fully automatic Alu-Alu blister packing machine designed for cold forming of hard-tempered aluminum foil. Engineered for high-barrier pharmaceutical packaging, it delivers superior protection against moisture, oxygen and light for sensitive APIs.",
     features: [
