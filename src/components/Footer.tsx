@@ -63,6 +63,11 @@ export function Footer() {
           <div className="text-center sm:text-right">CEO: {company.ceo} • Management: {company.management}</div>
         </div>
       </div>
+      <div className="border-t border-white/10">
+        <div className="container-page py-4 sm:py-5 text-center text-xs text-white/50">
+          Web Design by <span className="font-semibold text-white/70">Mr Abdullah</span>
+        </div>
+      </div>
     </footer>
   );
 }
