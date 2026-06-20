@@ -21,11 +21,11 @@ function CeoMessage() {
   return (
     <SiteLayout>
       <PageHero eyebrow="Leadership" title="A message from our CEO" />
-      <section className="py-16 md:py-24">
+      <section className="py-16 sm:py-24 md:py-28">
         <div className="container-page max-w-4xl">
-          <div className="bg-white border border-border rounded-2xl shadow-card p-8 md:p-14 relative">
-            <Quote className="absolute -top-5 -left-2 w-16 h-16 text-brand/15" />
-            <div className="space-y-5 text-muted-foreground leading-relaxed text-base md:text-lg">
+          <div className="bg-white border border-border rounded-3xl shadow-card p-8 sm:p-12 md:p-16 relative">
+            <Quote className="absolute -top-6 -left-3 w-20 h-20 text-brand/10" />
+            <div className="space-y-6 sm:space-y-7 text-muted-foreground leading-relaxed text-base sm:text-lg">
               <p>
                 It is an honor to lead AK Pharma Engineering, a company built on the conviction that pharmaceutical manufacturing in Pakistan deserves machinery and tooling of truly international quality.
               </p>
@@ -36,9 +36,9 @@ function CeoMessage() {
                 As we continue to grow across Pakistan and into export markets, our promise remains the same: honest engineering, transparent specifications, on-time delivery and lifetime partnership. Thank you for placing your trust in AK Pharma Engineering.
               </p>
             </div>
-            <div className="mt-10 pt-6 border-t border-border">
-              <div className="text-xl font-display font-bold text-brand-deep">{company.ceo}</div>
-              <div className="text-sm text-muted-foreground">Chief Executive Officer, AK Pharma Engineering</div>
+            <div className="mt-12 pt-8 border-t border-border">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-brand-deep">{company.ceo}</div>
+              <div className="text-sm sm:text-base text-muted-foreground mt-1">Chief Executive Officer, AK Pharma Engineering</div>
             </div>
           </div>
         </div>
