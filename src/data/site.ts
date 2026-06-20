@@ -268,7 +268,7 @@ export const products: Product[] = [
     slug: "blister-machine-dies",
     name: "Blister Machine Dies",
     short: "Custom precision dies for Alu-Alu and Alu-PVC blister machines.",
-    image: dies,
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fc961743549a1474795a8adbbd3509cf6%2F3e414123442f4424b5c84865720f8961?format=webp&width=800&height=1200",
     overview:
       "AK Pharma Engineering manufactures precision forming, sealing and cutting dies for all major blister packaging machine brands. Each die is CNC machined and hand-finished to micron tolerances.",
     features: [
