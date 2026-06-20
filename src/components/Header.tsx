@@ -20,39 +20,44 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all ${
-        scrolled ? "bg-white/90 backdrop-blur shadow-card" : "bg-white"
+      className={`sticky top-0 z-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+          : "bg-white/50 backdrop-blur-sm"
       }`}
     >
       <div className="container-page flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
           <Logo size={44} />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-8 flex-1 px-8">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-brand-deep transition-colors"
-              activeProps={{ className: "px-3 py-2 text-sm font-semibold text-brand-deep" }}
+              className="text-sm font-medium text-muted-foreground hover:text-brand-deep transition-colors relative group whitespace-nowrap"
+              activeProps={{ className: "text-sm font-semibold text-brand-deep" }}
               activeOptions={{ exact: l.to === "/" }}
             >
               {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-deep transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-deep scale-x-0 origin-left transition-transform duration-300 has-[&:active]:scale-x-100" />
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 lg:gap-3 ml-auto shrink-0">
           <a
             href={`tel:${company.phoneRaw}`}
-            className="hidden md:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-4 py-2.5 rounded-md shadow-brand hover:opacity-95 transition"
+            className="hidden lg:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
           >
-            <Phone className="w-4 h-4" /> {company.phone}
+            <Phone className="w-4 h-4" />
+            <span className="hidden xl:inline">{company.phone}</span>
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 rounded-md hover:bg-secondary"
+            className="lg:hidden p-2.5 rounded-lg hover:bg-secondary transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -61,14 +66,14 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-border bg-white">
-          <nav className="container-page py-3 flex flex-col">
+        <div className="lg:hidden border-t border-border/10 bg-white/50 backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
+          <nav className="container-page py-4 flex flex-col">
             {navLinks.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                className="py-3 text-base font-medium text-foreground border-b border-border/60 last:border-0"
-                activeProps={{ className: "py-3 text-base font-semibold text-brand-deep border-b border-border/60 last:border-0" }}
+                className="py-3.5 text-base font-medium text-foreground border-b border-border/5 last:border-0 hover:text-brand-deep transition-colors duration-200"
+                activeProps={{ className: "py-3.5 text-base font-semibold text-brand-deep border-b border-border/5 last:border-0" }}
                 activeOptions={{ exact: l.to === "/" }}
               >
                 {l.label}
@@ -76,7 +81,7 @@ export function Header() {
             ))}
             <a
               href={`tel:${company.phoneRaw}`}
-              className="mt-3 inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-4 py-3 rounded-md"
+              className="mt-4 inline-flex items-center justify-center gap-2 bg-brand-gradient text-white font-semibold px-5 py-3 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 w-full"
             >
               <Phone className="w-4 h-4" /> Call {company.phone}
             </a>
