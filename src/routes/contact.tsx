@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { PageHero } from "@/components/PageHero";
-import { MapPin, Phone, Mail, User, MessageCircle, Download } from "lucide-react";
-import { company } from "@/data/site";
+import { MapPin, Phone, Mail, User, MessageCircle, Download, FileText, Image } from "lucide-react";
+import { company, products } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -112,6 +112,76 @@ function Contact() {
             </button>
             <p className="text-xs text-muted-foreground text-center">By submitting, you'll be redirected to your email client.</p>
           </form>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 md:py-28 bg-secondary/40">
+        <div className="container-page">
+          <div className="mb-10 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-display font-bold text-brand-deep">Downloads & Resources</h2>
+            <p className="mt-3 text-muted-foreground">Access our company profile and product documentation.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-16 sm:mb-20">
+            <div className="bg-white border border-border rounded-2xl p-8 sm:p-10 shadow-card hover:shadow-brand transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <FileText className="w-8 h-8 text-brand shrink-0" />
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-brand-deep">Company Profile</h3>
+                  <p className="text-sm text-muted-foreground mt-1">Download our detailed company information and credentials.</p>
+                </div>
+              </div>
+              <a
+                href="/ak-pharma-engineering-company-profile.pdf"
+                download
+                className="inline-flex items-center gap-2 bg-brand text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand/90 hover:shadow-lg transition-all duration-200 text-sm min-h-11"
+              >
+                <Download className="w-4 h-4" /> Download PDF
+              </a>
+            </div>
+
+            <div className="bg-white border border-border rounded-2xl p-8 sm:p-10 shadow-card hover:shadow-brand transition-all duration-300">
+              <div className="flex items-start gap-4 mb-6">
+                <Image className="w-8 h-8 text-brand shrink-0" />
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-brand-deep">Product Brochure</h3>
+                  <p className="text-sm text-muted-foreground mt-1">Browse our complete product catalog with specifications.</p>
+                </div>
+              </div>
+              <a
+                href="/products"
+                className="inline-flex items-center gap-2 bg-brand text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand/90 hover:shadow-lg transition-all duration-200 text-sm min-h-11"
+              >
+                <Image className="w-4 h-4" /> View Products
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-display font-bold text-brand-deep mb-8">Featured Products</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+              {products && products.length > 0
+                ? products.slice(0, 6).map((product) => (
+                    <div key={product.slug} className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-brand hover:border-brand/30 transition-all duration-300">
+                      <div className="aspect-[4/3] bg-secondary overflow-hidden">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          loading="lazy"
+                          width={600}
+                          height={450}
+                          className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                        />
+                      </div>
+                      <div className="p-5 sm:p-6">
+                        <h4 className="font-display font-bold text-brand-deep text-base sm:text-lg line-clamp-2">{product.name}</h4>
+                        <p className="mt-2 text-xs sm:text-sm text-muted-foreground line-clamp-2">{product.short}</p>
+                      </div>
+                    </div>
+                  ))
+                : null}
+            </div>
+          </div>
         </div>
       </section>
     </SiteLayout>
