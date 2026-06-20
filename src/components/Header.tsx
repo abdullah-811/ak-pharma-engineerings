@@ -27,16 +27,16 @@ export function Header() {
       }`}
     >
       <div className="container-page flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
           <Logo size={44} />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8 flex-1 px-8">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm font-medium text-muted-foreground hover:text-brand-deep transition-colors relative group"
+              className="text-sm font-medium text-muted-foreground hover:text-brand-deep transition-colors relative group whitespace-nowrap"
               activeProps={{ className: "text-sm font-semibold text-brand-deep" }}
               activeOptions={{ exact: l.to === "/" }}
             >
@@ -47,12 +47,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 lg:gap-3 ml-auto shrink-0">
           <a
             href={`tel:${company.phoneRaw}`}
-            className="hidden md:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+            className="hidden lg:inline-flex items-center gap-2 bg-brand-gradient text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
           >
-            <Phone className="w-4 h-4" /> {company.phone}
+            <Phone className="w-4 h-4" />
+            <span className="hidden xl:inline">{company.phone}</span>
           </a>
           <button
             onClick={() => setOpen(!open)}
