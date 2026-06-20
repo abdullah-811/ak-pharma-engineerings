@@ -25,13 +25,12 @@ export const navLinks = [
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
   { to: "/quality", label: "Quality" },
-  { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 export type ProductSlug =
-  | "alu-alu-blister-dpp-260"
-  | "alu-pvc-blister-dpp-160"
+  | "alu-alu-blister-dpe-260"
+  | "alu-pvc-blister-dpe-160"
   | "sachet-packing-machine"
   | "strip-packing-machine"
   | "tablet-press-machine"
@@ -79,12 +78,12 @@ const commonMaint = [
 
 export const products: Product[] = [
   {
-    slug: "alu-alu-blister-dpp-260",
-    name: "Alu Alu Blister Packing Machine DPP-260",
+    slug: "alu-alu-blister-dpe-260",
+    name: "Alu Alu Blister Packing Machine DPE-260",
     short: "High-output cold-form aluminum blister line for moisture-sensitive tablets and capsules.",
     image: alualu,
     overview:
-      "The DPP-260 is a fully automatic Alu-Alu blister packing machine designed for cold forming of hard-tempered aluminum foil. Engineered for high-barrier pharmaceutical packaging, it delivers superior protection against moisture, oxygen and light for sensitive APIs.",
+      "The DPE-260 is a fully automatic Alu-Alu blister packing machine designed for cold forming of hard-tempered aluminum foil. Engineered for high-barrier pharmaceutical packaging, it delivers superior protection against moisture, oxygen and light for sensitive APIs.",
     features: [
       "PLC control with 7\" HMI touchscreen",
       "Servo-driven indexing for ±0.1 mm registration",
@@ -114,12 +113,12 @@ export const products: Product[] = [
     maintenance: commonMaint,
   },
   {
-    slug: "alu-pvc-blister-dpp-160",
-    name: "Alu PVC Blister Packing Machine DPP-160",
+    slug: "alu-pvc-blister-dpe-160",
+    name: "Alu PVC Blister Packing Machine DPE-160",
     short: "Compact, economical Alu-PVC blister line for small to medium pharmaceutical batches.",
     image: alupvc,
     overview:
-      "The DPP-160 is a precision Alu-PVC blister packing machine offering an excellent balance of footprint, output and reliability. Ideal for contract manufacturers and growing pharmaceutical units producing standard PVC/PVDC blisters.",
+      "The DPE-160 is a precision Alu-PVC blister packing machine offering an excellent balance of footprint, output and reliability. Ideal for contract manufacturers and growing pharmaceutical units producing standard PVC/PVDC blisters.",
     features: [
       "Flat-plate sealing system for uniform pressure",
       "Thermo-controlled forming station",
@@ -286,7 +285,7 @@ export const products: Product[] = [
     specs: [
       { label: "Material", value: "Tool steel, SS420, brass options" },
       { label: "Surface finish", value: "Ra < 0.4 μm" },
-      { label: "Compatible machines", value: "DPP series, IMA, Uhlmann formats" },
+      { label: "Compatible machines", value: "DPE series, IMA, Uhlmann formats" },
     ],
     applications: ["Forming", "Sealing", "Cutting / perforation"],
     industries: ["Pharmaceutical packaging"],
@@ -512,7 +511,7 @@ export const services = [
 ];
 
 export const projects = [
-  { title: "Blister Line Upgrade — Faisalabad", desc: "Retrofit of three DPP-260 lines with new tooling and cooling for a leading Pakistani pharma." },
+  { title: "Blister Line Upgrade — Faisalabad", desc: "Retrofit of three DPE-260 lines with new tooling and cooling for a leading Pakistani pharma." },
   { title: "Sachet Line Installation — Lahore", desc: "Turnkey 4-lane sachet packaging line for ORS and granule manufacturer." },
   { title: "Tooling Supply — Karachi", desc: "Custom Alu-Alu dies for moisture-sensitive antibiotic blister packaging." },
   { title: "Tablet Press Refurbishment — Islamabad", desc: "Complete overhaul and validation support for a 35-station rotary press." },
