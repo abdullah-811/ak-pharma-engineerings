@@ -23,9 +23,11 @@ function Home() {
     <SiteLayout>
       {/* HERO */}
       <section className="relative overflow-hidden bg-hero-gradient text-white">
-        <div className="absolute inset-0 opacity-30">
-          <img src={hero} alt="" width={1920} height={1080} className="w-full h-full object-cover mix-blend-overlay" />
-        </div>
+        {hero && (
+          <div className="absolute inset-0 opacity-30">
+            <img src={hero} alt="" width={1920} height={1080} className="w-full h-full object-cover mix-blend-overlay" />
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 via-brand-deep/30 to-transparent" />
         <div className="container-page relative py-16 sm:py-24 md:py-32 lg:py-40 max-w-5xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs font-medium uppercase tracking-wider mb-4 sm:mb-6 animate-fade-up">
@@ -60,12 +62,14 @@ function Home() {
       {/* STATS */}
       <section className="border-y border-border bg-white">
         <div className="container-page grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
-          {stats.map((s) => (
-            <div key={s.label} className="py-6 sm:py-8 text-center px-2 sm:px-3">
-              <div className="text-2xl sm:text-3xl md:text-5xl font-display font-bold text-brand-deep">{s.value}</div>
-              <div className="mt-1 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-muted-foreground line-clamp-2">{s.label}</div>
-            </div>
-          ))}
+          {stats && stats.length > 0 ? (
+            stats.map((s) => (
+              <div key={s.label} className="py-6 sm:py-8 text-center px-2 sm:px-3">
+                <div className="text-2xl sm:text-3xl md:text-5xl font-display font-bold text-brand-deep">{s.value}</div>
+                <div className="mt-1 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider text-muted-foreground line-clamp-2">{s.label}</div>
+              </div>
+            ))
+          ) : null}
         </div>
       </section>
 
@@ -128,25 +132,31 @@ function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {products.slice(0, 6).map((p) => (
-              <Link
-                key={p.slug}
-                to="/products/$slug"
-                params={{ slug: p.slug }}
-                className="group bg-white rounded-xl overflow-hidden border border-border hover:shadow-brand hover:border-brand/30 transition flex flex-col h-full"
-              >
-                <div className="aspect-[4/3] bg-secondary overflow-hidden">
-                  <img src={p.image} alt={p.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                </div>
-                <div className="p-4 sm:p-5 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-xs text-brand font-semibold uppercase tracking-wider mb-2">
-                    <Package className="w-3 sm:w-3.5 h-3 sm:h-3.5" /> Pharma Machinery
+            {products && products.length > 0 ? (
+              products.slice(0, 6).map((p) => (
+                <Link
+                  key={p.slug}
+                  to="/products/$slug"
+                  params={{ slug: p.slug }}
+                  className="group bg-white rounded-xl overflow-hidden border border-border hover:shadow-brand hover:border-brand/30 transition flex flex-col h-full"
+                >
+                  <div className="aspect-[4/3] bg-secondary overflow-hidden">
+                    <img src={p.image} alt={p.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                   </div>
-                  <h3 className="font-display font-bold text-brand-deep text-base sm:text-lg line-clamp-1">{p.name}</h3>
-                  <p className="mt-2 text-xs sm:text-sm text-muted-foreground line-clamp-2 flex-1">{p.short}</p>
-                </div>
-              </Link>
-            ))}
+                  <div className="p-4 sm:p-5 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 text-xs text-brand font-semibold uppercase tracking-wider mb-2">
+                      <Package className="w-3 sm:w-3.5 h-3 sm:h-3.5" /> Pharma Machinery
+                    </div>
+                    <h3 className="font-display font-bold text-brand-deep text-base sm:text-lg line-clamp-1">{p.name}</h3>
+                    <p className="mt-2 text-xs sm:text-sm text-muted-foreground line-clamp-2 flex-1">{p.short}</p>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground">No products available</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
