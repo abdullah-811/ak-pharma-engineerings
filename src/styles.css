@@ -1,0 +1,120 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-red: var(--brand-red);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.04 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 250);
+  /* Brand: deep corporate blue inspired by AK logo */
+  --primary: oklch(0.36 0.13 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.012 250);
+  --secondary-foreground: oklch(0.22 0.06 260);
+  --muted: oklch(0.965 0.008 250);
+  --muted-foreground: oklch(0.48 0.03 255);
+  --accent: oklch(0.92 0.04 240);
+  --accent-foreground: oklch(0.22 0.08 260);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.015 250);
+  --input: oklch(0.92 0.015 250);
+  --ring: oklch(0.55 0.12 255);
+
+  --brand: oklch(0.45 0.16 255);
+  --brand-deep: oklch(0.28 0.13 265);
+  --brand-red: oklch(0.55 0.19 25);
+
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.22 0.1 265) 0%, oklch(0.38 0.15 255) 60%, oklch(0.5 0.14 240) 100%);
+  --gradient-brand: linear-gradient(135deg, var(--brand-deep), var(--brand));
+  --shadow-brand: 0 20px 50px -20px oklch(0.3 0.12 260 / 0.45);
+  --shadow-card: 0 4px 16px -4px oklch(0.3 0.1 260 / 0.12);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-hero-gradient { background-image: var(--gradient-hero); }
+  .bg-brand-gradient { background-image: var(--gradient-brand); }
+  .text-brand { color: var(--brand); }
+  .text-brand-deep { color: var(--brand-deep); }
+  .bg-brand { background-color: var(--brand); }
+  .bg-brand-deep { background-color: var(--brand-deep); }
+  .shadow-brand { box-shadow: var(--shadow-brand); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .container-page { max-width: 1200px; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .container-page { padding-inline: 2rem; } }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(oklch(0.5 0.1 260 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.5 0.1 260 / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  @keyframes splash-in {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes splash-out {
+    to { opacity: 0; visibility: hidden; }
+  }
+  .animate-splash-in { animation: splash-in 0.6s ease-out both; }
+  .animate-splash-out { animation: splash-out 0.5s ease-in 2.2s forwards; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fade-up 0.7s ease-out both; }
+}
